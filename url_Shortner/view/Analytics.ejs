@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Data Analytics</title>
+</head>
+<body>
+
+    <h1>Analytics</h1>
+    <br>
+    <br><br>
+    <hr>
+    <ol> 
+            <% alldata.forEach((data)=>{ %>
+            <li>
+                <dl>
+                    <dt>Genrated URl: http://localhost:3000/<%= data.shortId %>  -   Redirected Url: <%= data.redirectURL %>   Total Clicks: <%= data.visitHistory.length %> </dt>
+                    <% data.visitHistory.forEach((data)=>{ %>
+                        <% if(data.timestamp) { %>
+                            <dd>[<%= data.timestamp %>]</dd>
+                            <%}%>
+                    <% }) %>
+                </dl>
+            </li>
+            <% }) %>
+    </ol>
+    
+
+</body>
+</html>

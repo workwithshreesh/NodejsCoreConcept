@@ -1,0 +1,14 @@
+{
+  "name": "url-server",
+  "version": "1.0.0",
+  "main": "urlserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "url-server"
+  ],
+  "author": "shreesh",
+  "license": "ISC",
+  "description": ""
+}

@@ -1,0 +1,15 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "learning express js",
+  "main": "learnexpre.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node learnexpre.js"
+  },
+  "author": "shreesh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}

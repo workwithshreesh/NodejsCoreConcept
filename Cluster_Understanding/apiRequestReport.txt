@@ -1,0 +1,14 @@
+# For loop API = 1.9e  ||  100 = request
+PS D:\nodeCore\Cluster_Understanding> node loadTest.js
+🔥 All 100 requests completed in 46441 ms with
+PS D:\nodeCore\Cluster_Understanding> node loadTest.js
+🔥 All 100 requests completed in 51888 ms without
+PS D:\nodeCore\Cluster_Understanding> 
+
+
+# For loop API = 1.8e  ||  1000 = request
+PS D:\nodeCore\Cluster_Understanding> node loadTest.js
+🔥 All 1000 requests completed in 32044 ms with
+PS D:\nodeCore\Cluster_Understanding> node loadTest.js
+🔥 All 1000 requests completed in 51679 ms without
+PS D:\nodeCore\Cluster_Understanding> 

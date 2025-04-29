@@ -1,0 +1,18 @@
+User runs:
+         node index.js
+               │
+      ┌────────┴─────────┐
+      │ cluster.isPrimary │ === true (main process)
+      └────────┬─────────┘
+               │
+      ┌────────┴───────────────┐
+      │  for (i = 0; i < N; i++)│  → cluster.fork()
+      └────────┬───────────────┘
+               │
+    ┌──────────┴───────────────┐
+    │ index.js file runs again │
+    └──────────┬───────────────┘
+               ↓
+      cluster.isPrimary === false
+               ↓
+      Runs express server in else block

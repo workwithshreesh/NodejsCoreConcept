@@ -1,0 +1,15 @@
+{
+  "name": "despr",
+  "version": "1.0.0",
+  "description": "understanding of express js framework",
+  "main": "dexp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node dexp.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}

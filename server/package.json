@@ -1,0 +1,16 @@
+{
+  "name": "myserver",
+  "version": "1.0.0",
+  "description": "created a my own server using http",
+  "main": "BuiltInserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "server",
+    "own",
+    "server"
+  ],
+  "author": "shreesh",
+  "license": "ISC"
+}

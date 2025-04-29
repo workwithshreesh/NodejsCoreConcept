@@ -1,0 +1,11 @@
+{
+  "name": "http_method",
+  "version": "1.0.0",
+  "description": "this is to now the get request or not",
+  "main": "methods_check.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

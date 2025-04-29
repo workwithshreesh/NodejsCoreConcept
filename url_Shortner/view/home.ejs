@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Url shortner templating</title>
+</head>
+<body>
+    
+        <h1>URL Shortner</h1>
+        <form method="POST" action="/url">
+            <div>
+                <input type="text" name="url" placeholder="https://example.com">
+            </div>
+            <br>
+            <button type="submit">Genrate URL</button>
+        </form>
+        <br><hr>
+
+        
+        <hr>
+        <ul>
+            <% if(alldata) { %>
+                <% alldata.forEach(url => { %>
+                    <li>
+                        Generated Link: (http://localhost:3000/url/<%= url.shortId %>) <a href="http://localhost:3000/url/<%= url.shortId %>" target="_blank">Click Here</a> - Redirect To: <%= url.redirectURL %>  
+                        <button onclick="DeleteUrl('<%= url.shortId %>')">Delete</button>
+                    </li>
+                    <hr>
+                <% }) %>
+            <% } %>
+        </ul>
+
+        <script>
+            async function DeleteUrl(shortId){
+                const response = await fetch("/url/delete",{
+                    method: 'DELETE',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ shortId: shortId }),
+                });
+
+                if (response.ok){
+                    alert("Url deleted successfull");
+                    location.reload()
+                } else {
+                    const data = await response.json();
+                    alert("Failed to delete url"+data.error)
+                }
+            }
+        </script>
+</body>
+</html>
