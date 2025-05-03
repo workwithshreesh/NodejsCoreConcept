@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket API Test</title>
+</head>
+<body>
+    <h1>WebSocket Example</h1>
+    <input id="msgInput" type="text" placeholder="Enter message..." />
+    <button onclick="sendMessage()">Send</button>
+    <ul id="messages"></ul>
+
+    <script>
+        const socket = new WebSocket('ws://localhost:3000');
+
+        socket.onopen = () => {
+            console.log('✅ WebSocket connected');
+        };
+
+        socket.onmessage = (event) => {
+            const li = document.createElement('li');
+            li.textContent = '🔁 ' + event.data;
+            document.getElementById('messages').appendChild(li);
+        };
+
+        function sendMessage() {
+            const msg = document.getElementById('msgInput').value;
+            socket.send(msg);
+        }
+    </script>
+</body>
+</html>
