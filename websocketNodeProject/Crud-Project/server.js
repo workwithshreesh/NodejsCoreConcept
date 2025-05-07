@@ -1,35 +1,28 @@
+// server.js or app.js
 const express = require('express');
 const WebSocket = require('ws');
 const http = require('http');
 const cors = require('cors');
-const socketHandler = require('./websocket/socketHandler');
+const socketRoute = require('./modules/websocket'); // Automatically picks index.js in /websocket
 
-app = express();
 
+const app = express();
+
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
+// Create HTTP server (to be shared by WebSocket and Express)
 const server = http.createServer(app);
-const wss = new WebSocket.Server({
-    server
+
+// Initialize WebSocket server
+const wss = new WebSocket.Server({ server });
+
+// Attach WebSocket routes/handlers
+socketRoute(wss);
+
+// Start server
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
-
-let items = []; //in memory db
-let sockets = [];
-
-wss.on('connection', (ws) => {
-    console.log('client connection via websocket');
-    socketHandler(ws, wss)
-});
-
-
-// Helper function to brodcast
-function broadcast(data){
-    sockets.forEach(s => {
-        if(s.readyState === WebSocket.OPEN){
-            s.send(JSON.stringify(data))
-        }
-    });
-}
-
-app.listen(process.env.PORT,()=>console.log(`Server is started... on port ${process.env.PORT}`));

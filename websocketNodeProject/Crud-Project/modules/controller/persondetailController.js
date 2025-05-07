@@ -1,13 +1,14 @@
-const { Person } = require('../models');
-
+const { Person } = require('../services/person.service');
+const { success, error } = require("../../utils/response");
+// const
 
 exports.createPerson = async (ws,data) => {
     try {
         const person = await Person.create(data);
-        return res.status(200).json(person);
+        ws.send(JSON.stringify(success(person, 'create')));
     } catch (err) {
         console.log('error in create person',err.message);
-        res.status(400).json({'error':err.message});
+        ws.send(JSON.stringify(error(error.message)))
     }
 }
 
@@ -16,10 +17,10 @@ exports.createPerson = async (ws,data) => {
 exports.readPerson = async (ws) => {
     try {
         const person = await Person.find();
-        ws.send(JSON.stringify({ action: 'read', success: true, person }));
+        ws.send(JSON.stringify(success(person, 'read')));
     } catch (error) {
         console.log('error in read person',err.message);
-        ws.send(JSON.stringify({action: 'read', success: false, error: error.message}))
+        ws.send(JSON.stringify(error(error.message)));
     }
 }
 
